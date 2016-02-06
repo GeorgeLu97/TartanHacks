@@ -17,6 +17,7 @@
             <td class="label">{{period.0.0}}</td>
             {% for day in period %}
                 {% if day.1 %}
+                {% ifnotequal day.1.codeNumber "free" %}
                     <td class="class">{{day.1.codeNumber}}
                         <div class="tooltip">
                             {% if day.2 %}
@@ -29,6 +30,9 @@
                             {% endif %}
                         </div>
                     </td>
+                {% else %}
+                    <td class="break"></td>
+                {% endifnotequal %}
                 {% else %}
                     <td class="break"></td>
                 {% endif %}

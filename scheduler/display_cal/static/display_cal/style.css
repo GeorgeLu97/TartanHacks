@@ -1,5 +1,5 @@
 td {
-    width: 50px;
+    width: 80px;
 }
 
 td div.tooltip {
@@ -30,7 +30,7 @@ table {
 }
 
 tr {
-    height: 10px;
+    height: 30px;
 }
 
 td.label {

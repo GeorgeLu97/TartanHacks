@@ -20,4 +20,4 @@ def FileStringToICal(SCF,OwnerArray):
         cal.add_component(event)
     x = open(OwnerArray.join(),'wb')
     x.write(cal.as_string())
-    x.close
+    x.close()

@@ -35,15 +35,25 @@ def event_to_periods(e, person):
     ps = []
 
     for st, et, in splittime(e.time[0],e.time[1],e.day):
-        p = Period(startTime = st, endTime = et, day = e.day)
+        p = Period.objects.filter(startTime=st).filter(day=e.day).first()
+        print(p)
+        print("hi")
+        if not p:
+            p = Period(startTime = st, endTime = et, day = e.day)
+            p.save()
+            
         #fix this later
-        c = Course(codeNumber = e.summary.split(' :: ')[-1], 
-                   name = e.location, 
-                   building = e.location,
-                   room = e.location)
-        c.save()
+        tmpCodeNumber = e.summary.split(' :: ')[-1]
+        c = Course.objects.filter(codeNumber=tmpCodeNumber).first()
+        print(c)
+        if not c:
+            c = Course(codeNumber = tmpCodeNumber, 
+                       name = e.location, 
+                       building = e.location,
+                       room = e.location)
+            c.save()
+            
         c.people.add(person)
-        p.save()
         p.courses.add(c)
         ps.append(p)
         #print(st)
@@ -52,10 +62,13 @@ def event_to_periods(e, person):
 def schedule_to_p(s, name, username):
     '''converts from schedule to period obj'''
     periods = []
-    rando = Person(name=name, username=username)
-    rando.save()
+    #check that person isn't already in database
+    student = Person.objects.filter(username=username)
+    if not student:
+        student = Person(name=name, username=username)
+        student.save()
     for e in s.events:
-        periods.extend(event_to_periods(e, rando))
+        periods.extend(event_to_periods(e, student))
     return periods
     
 """

@@ -1,0 +1,16 @@
+p span {
+    display: none;
+    position: absolute;
+    color: #ffffff;
+    background: #000000;
+    padding: 5px;
+}
+
+a {
+    position: relative;
+}
+
+p:hover span {
+    display: block;
+    text-align: center;
+}

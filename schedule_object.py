@@ -1,9 +1,25 @@
 import icalendar
 import datetime
+import copy
+
+def eventsplit(e):
+    '''splits an event into a separate event for each day'''
+    es = [copy.deepcopy(e) for date in e.days]
+    for i, e in enumerate(es):
+        e.day = e.days[i]
+        del e.days
+    return es
 
 class Event:
     '''a event object has one constructor which takes a component object'''
-
+    ''' there are four attributes:
+    summary -- a string
+    location -- a string
+    time -- a (hour, hour) tuple
+    
+    only one of the following attributes may be in use at a time
+    days -- a list of strings for days of the week
+    day -- a single string for the day of the week this event happens on'''
     def __init__(self, component = None):
         if component is None:
             return
@@ -13,6 +29,7 @@ class Event:
         startt,endt = component['DTSTART'].dt,component['DTEND'].dt
         starthour, endhour = gethour(startt), gethour(endt)
         self.time = (starthour,endhour)
+        self.day = ''
         self.days = [str(val) for val in component['RRULE']['BYDAY']]
         self.summary = str(component['SUMMARY'])
         self.location = str(component['LOCATION'])
@@ -27,20 +44,27 @@ class Event:
 class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
-    def __init__(self,filename):
+    def __init__(self,filename,splitevents = True):
+        events = []
         self.events = []
         with open(filename, "rb") as inf:
             schedule = icalendar.Calendar.from_ical(inf.read())
         for component in schedule.walk():
             if component.name == "VEVENT":
-                self.events.append(Event(component))
+                events.append(Event(component))
+        if splitevents:
+            for event in events:
+                self.events.extend(eventsplit(event))
+        else:
+            self.events = events
+            
 
 #test code
 print 'schedule 0'
 q0 = Schedule('test_schedule.ics')
 for e in q0.events:
-    print e.time, e.days
+    print e.time, e.day
 print 'schedule 1'
 q1 = Schedule('S16_schedule.ics')
 for e in q1.events:
-    print e.time, e.days
+    print e.time, e.day

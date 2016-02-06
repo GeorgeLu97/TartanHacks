@@ -26,7 +26,7 @@ def splittime(t0,t1,d):
     while t0 < t1:
         dts.append((get_dt(t0,d),get_dt(t0+.5,d)))
         t0 += .5
-    return dts    
+    return filter(lambda x: x[0] >= 7 and x[1] <= 8.5, dts)
 
 @atomic
 def event_to_periods(e, person):

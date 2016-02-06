@@ -4,6 +4,7 @@ import overlap
 from schedule_object import Schedule, Event
 
 def FileStringToICal(SCF,OwnerArray):
+    #How do you get days of week
     cals = []
     for i in SCF:
         cals.append(Schedule(i,OwnerArray[i]))
@@ -12,8 +13,8 @@ def FileStringToICal(SCF,OwnerArray):
     for i in sh1.events():
         event = icalendar.event()
         event.add('summary',i.summary)
-        event.add('dtstart',i.startt)
-        event.add('dtend',i.endt)
+        event.add('dtstart',i.get_start_dt())
+        event.add('dtend',i.get_end_dt())
         event.add('location',i.location)
         event.add('rrule',"FREQ=WEEKLY;")
         cal.add_component(event)

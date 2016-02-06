@@ -1,3 +1,25 @@
 from django.db import models
 
 # Create your models here.
+
+class Person(models.Model):
+    name = models.CharField(max_length=50)
+    other = models.TextField()
+    
+    def __unicode__(self):
+        return self.name
+
+class Course(models.Model):
+    name = models.CharField(max_length=70)
+    building = models.CharField(max_length=20)
+    room = models.CharField(max_length=5)
+    people = models.ManyToManyField(Person)
+    
+    def __unicode__(self):
+        return self.name
+    
+class Period(models.Model):
+    startTime = models.TimeField()
+    endTime = models.TimeField()
+    day = models.CharField(max_length=2, default='NA')
+    courses = models.ManyToManyField(Course)

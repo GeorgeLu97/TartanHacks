@@ -1,5 +1,4 @@
-*~
-
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -45,7 +44,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *,cover
-.hypothesis/
 
 # Translations
 *.mo
@@ -53,7 +51,6 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
 
 # Sphinx documentation
 docs/_build/
@@ -61,10 +58,4 @@ docs/_build/
 # PyBuilder
 target/
 
-#Ipython Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-*.ics
+# Created by .ignore support plugin (hsz.mobi)

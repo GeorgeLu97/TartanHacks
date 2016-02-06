@@ -5,7 +5,7 @@ import django
 from django.db.transaction import atomic
 
 from schedule_object import *
-from overlap import *
+#from overlap import *
 
 sys.path.append('./scheduler/')
 os.environ["DJANGO_SETTINGS_MODULE"] = "scheduler.settings"
@@ -52,12 +52,12 @@ def event_to_periods(e, person):
 def schedule_to_p(s):
     '''converts from schedule to period obj'''
     periods = []
-    rando = Person(name="Test1", username="test1")
+    rando = Person(name="Test", username="test")
     rando.save()
     for e in s.events:
         periods.extend(event_to_periods(e, rando))
     return periods
-
+print(q1)
 #testcode
 #p0 = schedule_to_p(q0)
 p1 = schedule_to_p(q1)

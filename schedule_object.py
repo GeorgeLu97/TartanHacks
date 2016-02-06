@@ -51,7 +51,7 @@ class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
     Owner=''
-    def __init__(self,filename = None,Owner='', complete = True):
+    def __init__(self,filename = None,Owner='', complete = False):
         events = []
         self.events = []
         self.Owner = Owner
@@ -92,9 +92,9 @@ class Schedule:
 
 #test code
 print 'schedule 0'
-q0 = Schedule('test_schedule.ics')
-for e in q0.events:
-    print e.time, e.day
+#q0 = Schedule('test_schedule.ics')
+#for e in q0.events:
+#    print e.time, e.day
 print 'schedule 1'
 q1 = Schedule('S16_schedule.ics')
 for e in q1.events:

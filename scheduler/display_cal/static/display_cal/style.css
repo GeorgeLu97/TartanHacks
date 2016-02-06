@@ -1,4 +1,4 @@
-p span {
+td span {
     display: none;
     position: absolute;
     color: #ffffff;
@@ -10,7 +10,7 @@ a {
     position: relative;
 }
 
-p:hover span {
+td:hover span {
     display: block;
     text-align: center;
 }

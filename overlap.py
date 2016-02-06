@@ -40,7 +40,7 @@ def overlap_s_schedule(sh1,s1,s2):
         for e2 in sh1.events():
             if overlap(e1,e2):
                 paired = True
-                e = overlap(e1,e2)
+                e = e2
                 break
         if paired:
             e.summary = e.summary + " " + s2.Owner

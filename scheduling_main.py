@@ -18,10 +18,10 @@ def FileStringToICal(SCF,OwnerArray):
         event.add('location',i.location)
         event.add('rrule',"FREQ=WEEKLY;")
         cal.add_component(event)
-    x = open(OwnerArray.join(),'wb')
+    x = open(OwnerArray.join() + '.ics','wb')
     x.write(cal.as_string())
     x.close()
-    return OwnerArray.join()
+    return (OwnerArray.join() + '.ics')
 
 def GroupIcal(SCF, OwnerArray):
     #Literally least efficient way

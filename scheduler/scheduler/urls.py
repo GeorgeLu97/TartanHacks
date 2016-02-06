@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^index/', include('display_cal.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^upload/', include('uploader.urls')),
 ]

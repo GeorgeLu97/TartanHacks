@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16c1e463-8579-4bf7-aab8-535ec65bec10" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scheduling main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/overlap.py" afterPath="$PROJECT_DIR$/overlap.py" />
     </list>
     <ignored path="TartanHacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/schedule_object.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -66,11 +66,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="overlap.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="overlap.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/overlap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.858569">
-              <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scheduling main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scheduling main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4808652">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -106,8 +116,9 @@
         <option value="$PROJECT_DIR$/File" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Halp.py" />
-        <option value="$PROJECT_DIR$/schedule_object.py" />
         <option value="$PROJECT_DIR$/overlap.py" />
+        <option value="$PROJECT_DIR$/schedule_object.py" />
+        <option value="$PROJECT_DIR$/scheduling main.py" />
       </list>
     </option>
   </component>
@@ -330,12 +341,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32870865" sideWeight="0.5125261" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32870865" sideWeight="0.5125261" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32870865" sideWeight="0.4874739" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.27453026" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -498,20 +509,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/overlap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/schedule_object.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/overlap.py">
+    <entry file="file://$PROJECT_DIR$/scheduling main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.858569">
-          <caret line="58" column="14" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.4808652">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>

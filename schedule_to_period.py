@@ -33,7 +33,6 @@ def splittime(t0,t1,d):
 def event_to_periods(e, person):
     '''converts an event to periods'''
     ps = []
-
     for st, et, in splittime(e.time[0],e.time[1],e.day):
         p = Period.objects.filter(startTime=st).filter(day=e.day).first()
         print(p)
@@ -56,7 +55,6 @@ def event_to_periods(e, person):
         c.people.add(person)
         p.courses.add(c)
         ps.append(p)
-        #print(st)
     return ps
 
 def schedule_to_p(s, name, username):
@@ -70,7 +68,11 @@ def schedule_to_p(s, name, username):
     for e in s.events:
         periods.extend(event_to_periods(e, student))
     return periods
-    
+
+#testcode
+#p0 = schedule_to_p(q0, 'ricson9')
+#p1 = schedule_to_p(q1, 'chong9')
+#p2 = schedule_to_p(q2, 'overlap9')
 """
 print(q1)
 #testcode
@@ -79,5 +81,3 @@ p1 = schedule_to_p(q1)
 #print("hi")
 #p2 = schedule_to_p(q2)
 """
-
-

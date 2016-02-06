@@ -80,9 +80,9 @@ class Schedule:
         for day, es in day_dict.items():
             start = 0
             for e in es:
-                if e.time[0] > start:
+                if e.time[0]-.00001 > start:
                     gap_events.append((start, e.time[0],day))
-                    start = e.time[1]
+                start = e.time[1]
             if start < 24:
                 gap_events.append((start,24,day))
         for s,t,d in gap_events:
@@ -96,11 +96,11 @@ class Schedule:
 #test code
 """
 print 'schedule 0'
+>>>>>>> 38b16c43a0c96f359e2380a8098bcb77779c337e
 q0 = Schedule('test_schedule.ics')
-for e in q0.events:
-    print e.time, e.day
-print 'schedule 1'
 q1 = Schedule('S16_schedule.ics')
+<<<<<<< HEAD
+=======
 for e in q1.events:
     print e.time, e.day
 print("hi1")

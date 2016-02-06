@@ -1,5 +1,5 @@
 td {
-    width: 50px;
+    width: 80px;
 }
 
 td div.tooltip {
@@ -22,6 +22,8 @@ td:hover div {
 table {
     background-color: white;
     text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
 }
 
 .middle {
@@ -30,7 +32,7 @@ table {
 }
 
 tr {
-    height: 10px;
+    height: 30px;
 }
 
 td.label {

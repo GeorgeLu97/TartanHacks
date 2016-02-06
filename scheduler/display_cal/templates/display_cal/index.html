@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'display_cal/style.css' %}" />
+
+<table class="middle">
+    <tr>
+        <th>Time</th>
+        {% for day in days_of_week %}
+            <th>{{day}}</th>
+        {% endfor %}
+    </tr>
+    {% for period in schedule %}
+        <tr>
+            <td class="label">{{period.0.0}}</td>
+            {% for day in period %}
+                {% if day.1 %}
+                    <td class="class"><div class="tooltip">
+                        {{day.1.codeNumber}}
+                        <p>
+                        Friends: 
+                        {% for friend in day.2 %}
+                            {{friend}} 
+                        {% endfor %}
+                        </p>
+                    </div></td>
+                {% else %}
+                    <td class="break"></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>

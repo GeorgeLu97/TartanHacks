@@ -1,6 +1,6 @@
 import icalendar
 import datetime
-from schedule_object import Schedule, Event, q0, q1
+from schedule_object import *
 
 def overlap(e1,e2):
     '''returns the overlap of event 1 and event2'''
@@ -11,7 +11,7 @@ def overlap(e1,e2):
         return False
     else:
         e = Event()
-        e.set((t1,t2),e1.day, '',e1.location)
+        e.set((t1,t2),e1.day, e1.summary, e1.location)
         return e
 
 def overlap_schedule(s1, s2):
@@ -26,9 +26,7 @@ def overlap_schedule(s1, s2):
         for component2 in s2.events:
             e = overlap(component1, component2)
             if e:
-                e.summary = "Shared With " + s2.Owner
                 ret.events.append(e)
-
     return ret
 
 def overlap_s_schedule(sh1,s1,s2):

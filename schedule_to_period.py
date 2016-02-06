@@ -52,14 +52,14 @@ def event_to_periods(e, person):
 def schedule_to_p(s):
     '''converts from schedule to period obj'''
     periods = []
-    rando = Person(name="ABDEC", username="abcdef")
+    rando = Person(name="Test1", username="test1")
     rando.save()
     for e in s.events:
         periods.extend(event_to_periods(e, rando))
     return periods
 
 #testcode
-p0 = schedule_to_p(q0)
-#p1 = schedule_to_p(q1)
+#p0 = schedule_to_p(q0)
+p1 = schedule_to_p(q1)
 #print("hi")
 #p2 = schedule_to_p(q2)

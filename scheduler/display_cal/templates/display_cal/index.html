@@ -14,7 +14,7 @@
             <td class="label">{{period.0.0}}</td>
             {% for day in period %}
                 {% if day.1 %}
-                    <td class="class"><span class="tooltip">
+                    <td class="class"><div class="tooltip">
                         {{day.1.codeNumber}}
                         <p>
                         Friends: 
@@ -22,7 +22,7 @@
                             {{friend}} 
                         {% endfor %}
                         </p>
-                    </span></td>
+                    </div></td>
                 {% else %}
                     <td class="break"></td>
                 {% endif %}

@@ -2,7 +2,7 @@ td {
     width: 50px;
 }
 
-td span {
+td div.tooltip {
     display: none;
     position: absolute;
     color: #ffffff;
@@ -14,7 +14,7 @@ a {
     position: relative;
 }
 
-td:hover span {
+td:hover div {
     display: block;
     text-align: center;
 }

@@ -35,8 +35,6 @@ def event_to_periods(e, person):
     ps = []
     for st, et, in splittime(e.time[0],e.time[1],e.day):
         p = Period.objects.filter(startTime=st).filter(day=e.day).first()
-        print(p)
-        print("hi")
         if not p:
             p = Period(startTime = st, endTime = et, day = e.day)
             p.save()
@@ -44,7 +42,6 @@ def event_to_periods(e, person):
         #fix this later
         tmpCodeNumber = e.summary.split(' :: ')[-1]
         c = Course.objects.filter(codeNumber=tmpCodeNumber).first()
-        print(c)
         if not c:
             c = Course(codeNumber = tmpCodeNumber, 
                        name = e.location, 

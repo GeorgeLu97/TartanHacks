@@ -47,3 +47,13 @@ def overlap_s_schedule(sh1,s1,s2):
         else:
             sh1.append(e1)
     return sh1
+
+def overlapping_wrapper(slist):
+    #return overlap with slist[0] being client
+    sh1 = Schedule()
+    if len(slist) == 1:
+        return slist
+    else
+        for i in range (0,len(slist) - 2):
+            sh1 = overlap_s_schedule(sh1,slist[i],slist[i+1])
+    return sh1

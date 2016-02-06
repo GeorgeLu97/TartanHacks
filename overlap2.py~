@@ -1,0 +1,27 @@
+import icalendar
+import datetime
+from schedule_object import Schedule, Event, q0, q1
+
+def overlap(e1,e2):
+    '''returns the overlap of event 1 and event2'''
+    if e1.day != e2.day or e1.location != e2.location:
+        return False
+    t1, t2 = max(e1.time[0],e2.time[0]),min(e1.time[1],e2.time[1])
+    if t1 >= t2:
+        return False
+    else:
+        e = Event()
+        e.set((t1,t2),e1.day,'',e1.location)
+        return e
+
+def overlap_schedule(s1, s2):
+    '''returns the overlap of two schedules'''
+    s = Schedule()
+    for e1 in s1.events:
+        for e2 in s2.events:
+            q = overlap(e1,e2)
+            if q:
+                s.events.append(q)
+    return s
+
+q2 = overlap_schedule(q0,q1)

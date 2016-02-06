@@ -99,3 +99,4 @@ print 'schedule 1'
 q1 = Schedule('S16_schedule.ics')
 for e in q1.events:
     print e.time, e.day
+print("hi1")

@@ -11,6 +11,7 @@ class Person(models.Model):
         return self.name
 
 class Course(models.Model):
+    codeNumber = models.CharField(max_length=8, default='')
     name = models.CharField(max_length=70)
     building = models.CharField(max_length=20)
     room = models.CharField(max_length=5)

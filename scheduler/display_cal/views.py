@@ -5,27 +5,32 @@ from django.shortcuts import render
 import datetime
 from .models import Period, Person, Course
 
-def index(request, user=None):
+def index(request, username=None):
     template = loader.get_template('display_cal/index.html')
     
-    user = Person.objects.filter(username__exact=user).first()
+    user = Person.objects.filter(username__exact=username).first()
     userPeriods = []
     periods = [datetime.time(h,m) for h in range(7,21) for m in [0,30]]
     days = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
+    courseFriends = {}
     
-    schedule = [[(startTime, False) for day in days] for startTime in periods]
+    schedule = [[(startTime, False, None) for day in days] for startTime in periods]
     
     if user:
         courses = user.course_set.all()
         for course in courses:
+            pers = Period.objects.filter(courses__name__contains=course.name)
+            courseFriends[course.name] = list(course.people.exclude(username__exact=username))
+            
+            for per in pers:
+                old = schedule[periods.index(per.startTime)][days.index(per.day)]
+                schedule[periods.index(per.startTime)][days.index(per.day)] = (old[0], course, courseFriends[course.name])
+                
             userPeriods.extend(list(Period.objects.filter(courses__name__contains=course.name)))
-    
-        for period in userPeriods:
-            old = schedule[periods.index(period.startTime)][days.index(period.day)]
-            schedule[periods.index(period.startTime)][days.index(period.day)] = (old[0], True)
     
     context = {'days_of_week': days,
                'user_periods': userPeriods,
-               'periods': periods,
-               'schedule': schedule}
+               'schedule': schedule,
+               'friends': courseFriends}
+               
     return render(request, 'display_cal/index.html', context)

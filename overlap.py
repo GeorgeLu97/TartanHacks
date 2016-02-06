@@ -11,7 +11,7 @@ def overlap(e1,e2):
         return False
     else:
         e = Event()
-        e.set(t1,t2),e1.day, e1.location)
+        e.set((t1,t2),e1.day, e1.location)
         return e
 
 def overlap_schedule(s1, s2):
@@ -20,5 +20,12 @@ def overlap_schedule(s1, s2):
     #for each e1 from s1 and e2 from s2
     #add their overlap to the schedule
     #return schedule
-    pass
+    ret = Schedule()
+    for component1 in s1.events():
+        for component2 in s2.events():
+            e = overlap(component1, component2)
+            if not e:
+                ret.events.append(e)
+
+    return ret
 

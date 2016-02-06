@@ -1,30 +1,24 @@
 import icalendar
 import datetime
 
-def weektime(dtobj):
-    '''converts a datetime object into a tuple which contains
-    (weekday, starthour, endhour), with times rounded to the next
-    10 minutes (for example, 12:20 is rounded to hour 12.5)'''
-    daymap = {0:'M',1:'T',2:'W',3:'R',4:'F',5:'S',6:'U'}
-    minmap = lambda x: x+10 if x in [20,50] else x
-    return (daymap[dtobj.weekday()],dtobj.hour+minmap(dtobj.minute)/60.)
-
 class Event:
-    '''a event object has one constructor which takes a component object
-    it has four attributes -- obj.start, obj.end, obj.summary, and obj.location
-    the first two time tuples (weekday, hour), the latter are strings'''
-    datekeys = ['DTSTART', 'DTEND'] #'DTSTAMP'
-    stringkeys= ['SUMMARY', 'LOCATION'] #'DESCRIPTION'
+    '''a event object has one constructor which takes a component object'''
+
     def __init__(self, component = None):
         if component is None:
             return
-        for key in Event.datekeys:
-            setattr(self, key.lower()[2:], weektime(component.get(key).dt))
-        for key in Event.stringkeys:
-            setattr(self, key.lower(), str(component.get(key)))
-    def set(start, end, summary='', location=''):
-        self.start = start
-        self.end = end
+        self.component = component
+        minmap = lambda x: x+10 if x in [20,50] else x
+        gethour = lambda x: x.hour+minmap(x.minute)/60.
+        startt,endt = component['DTSTART'].dt,component['DTEND'].dt
+        starthour, endhour = gethour(startt), gethour(endt)
+        self.time = (starthour,endhour)
+        self.days = [str(val) for val in component['RRULE']['BYDAY']]
+        self.summary = str(component['SUMMARY'])
+        self.location = str(component['LOCATION'])
+    def set(time, days, summary='', location=''):
+        self.time = time
+        self.days = days
         if summary:
             self.summary = summary
         if location:
@@ -42,6 +36,11 @@ class Schedule:
                 self.events.append(Event(component))
 
 #test code
-q = Schedule('test_schedule.ics')
-for e in q.events:
-    print e.start, e.end
+print 'schedule 0'
+q0 = Schedule('test_schedule.ics')
+for e in q0.events:
+    print e.time, e.days
+print 'schedule 1'
+q1 = Schedule('S16_schedule.ics')
+for e in q1.events:
+    print e.time, e.days

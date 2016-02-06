@@ -92,9 +92,9 @@ class Schedule:
 
 #test code
 print 'schedule 0'
-#q0 = Schedule('test_schedule.ics')
-#for e in q0.events:
-#    print e.time, e.day
+q0 = Schedule('test_schedule.ics')
+for e in q0.events:
+    print e.time, e.day
 print 'schedule 1'
 q1 = Schedule('S16_schedule.ics')
 for e in q1.events:

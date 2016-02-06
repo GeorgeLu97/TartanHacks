@@ -24,9 +24,10 @@ def index(request, username=None):
                 
             userPeriods.extend(list(Period.objects.filter(courses__name__contains=course.name)))
     
+    #TODO: render different courses with different colors
+    
     context = {'days_of_week': days,
-               'user_periods': userPeriods,
                'schedule': schedule,
-               'friends': courseFriends}
+               }
                
     return render(request, 'display_cal/index.html', context)

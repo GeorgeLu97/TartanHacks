@@ -1,5 +1,6 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    {{form.name}}
     {{form.username}}
     {{form.docfile}}
     <p><input type="submit" value = "Upload"/></p>

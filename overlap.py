@@ -1,6 +1,6 @@
 import icalendar
 import datetime
-from schedule_object import Schedule, Event, q0, q1
+#from schedule_object import Schedule, Event, q0, q1
 
 def overlap(e1,e2):
     '''returns the overlap of event 1 and event2'''
@@ -60,4 +60,4 @@ def overlapping_wrapper(slist):
 
 
 #test
-q2 = overlap_schedule(q0,q1)
+#q2 = overlap_schedule(q0,q1)

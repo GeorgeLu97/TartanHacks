@@ -23,11 +23,17 @@ def index(request, username=None):
                 schedule[periods.index(per.startTime)][days.index(per.day)] = (old[0], course, courseFriends[course.name])
                 
             userPeriods.extend(list(Period.objects.filter(courses__name__contains=course.name)))
-    
+            
+        context = {'days_of_week': days,
+           'schedule': schedule,
+           }
+        
+        return render(request, 'display_cal/index.html', context)
+    else:
+        context = None
+        return render(request, 'display_cal/none.html', context)
     #TODO: render different courses with different colors
     
-    context = {'days_of_week': days,
-               'schedule': schedule,
-               }
+    
                
-    return render(request, 'display_cal/index.html', context)
+    

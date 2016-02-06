@@ -1,3 +1,4 @@
+from collections import defaultdict
 import icalendar
 import datetime
 import copy
@@ -33,14 +34,17 @@ class Event:
         self.days = [str(val) for val in component['RRULE']['BYDAY']]
         self.summary = str(component['SUMMARY'])
         self.location = str(component['LOCATION'])
-    def set(time, days, summary='', location=''):
+    def set(self,time, day, summary='', location=''):
         self.time = time
-        self.days = days
+        self.day = day
         if summary:
             self.summary = summary
         if location:
             self.location = location
-
+    def __str__(self):
+        return ("%s from %.1f to %.1f on %s" %
+                (self.location, self.time[0], self.time[1], self.day))
+            
 class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
@@ -63,11 +67,28 @@ class Schedule:
             self.events = events
     def complete(self):
         '''unions a schedule with its complement'''
-        #for each day of the week
-        #sort items
-        #if there is a gap, fill it
-        #edge case for start and end of day
-        pass
+        day_dict = defaultdict(list)
+        for event in self.events:
+            day_dict[event.day].append(event)
+        for day in day_dict:
+            day_dict[day].sort()
+        gap_events = []
+        for day, es in day_dict.items():
+            start = 0
+            for e in es:
+                if e.time[0] > start:
+                    gap_events.append((start, e.time[0],day))
+                    start = e.time[1]
+            if start < 24:
+                gap_events.append((start,24,day))
+        for s,t,d in gap_events:
+            E = Event()
+            E.set((s,t),d,'free','free')
+            self.events.append(E)
+    def __str__(self):
+        return ("%s has %d events\n" % (self.Owner, len(self.events))+
+                '\n'.join([str(e) for e in self.events]))
+            
 
 #test code
 print 'schedule 0'

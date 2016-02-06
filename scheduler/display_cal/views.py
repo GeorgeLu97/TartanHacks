@@ -7,7 +7,7 @@ def index(request, username=None):
     user = Person.objects.filter(username__exact=username).first()
     userPeriods = []
     periods = [datetime.time(h,m) for h in range(7,21) for m in [0,30]]
-    days = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
+    days = ["MO", "TU", "WE", "TH", "FR"]
     courseFriends = {}
     
     schedule = [[(startTime, False, None) for day in days] for startTime in periods]

@@ -51,7 +51,7 @@ class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
     Owner=''
-    def __init__(self,filename = None,Owner='', complete = False, data=None):
+    def __init__(self,filename = None,Owner='', complete = True, data=None):
         events = []
         self.events = []
         self.Owner = Owner

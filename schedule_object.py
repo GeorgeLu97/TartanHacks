@@ -51,14 +51,17 @@ class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
     Owner=''
-    def __init__(self,filename = None,Owner='', complete = False):
+    def __init__(self,filename = None,Owner='', complete = False, data=None):
         events = []
         self.events = []
         self.Owner = Owner
-        if not filename:
+        if not filename and not data:
             return
-        with open(filename, "rb") as inf:
-            schedule = icalendar.Calendar.from_ical(inf.read())
+        if filename:    
+            with open(filename, "rb") as inf:
+                schedule = icalendar.Calendar.from_ical(inf.read())
+        elif data:
+            schedule = icalendar.Calendar.from_ical(data)
         for component in schedule.walk():
             if component.name == "VEVENT":
                 events.append(Event(component))
@@ -91,5 +94,17 @@ class Schedule:
                 '\n'.join([str(e) for e in self.events]))
 
 #test code
+<<<<<<< HEAD
+=======
+"""
+print 'schedule 0'
+>>>>>>> 38b16c43a0c96f359e2380a8098bcb77779c337e
 q0 = Schedule('test_schedule.ics')
 q1 = Schedule('S16_schedule.ics')
+<<<<<<< HEAD
+=======
+for e in q1.events:
+    print e.time, e.day
+print("hi1")
+"""
+>>>>>>> 38b16c43a0c96f359e2380a8098bcb77779c337e

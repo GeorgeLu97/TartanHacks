@@ -17,9 +17,6 @@ class Event:
     summary -- a string
     location -- a string
     time -- a (hour, hour) tuple
-    
-    only one of the following attributes may be in use at a time
-    days -- a list of strings for days of the week
     day -- a single string for the day of the week this event happens on'''
     def __init__(self, component = None):
         if component is None:
@@ -49,7 +46,7 @@ class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
     Owner=''
-    def __init__(self,filename = None,Owner='',splitevents = True):
+    def __init__(self,filename = None,Owner='', complete = True):
         events = []
         self.events = []
         self.Owner = Owner
@@ -60,13 +57,12 @@ class Schedule:
         for component in schedule.walk():
             if component.name == "VEVENT":
                 events.append(Event(component))
-        if splitevents:
-            for event in events:
-                self.events.extend(eventsplit(event))
-        else:
-            self.events = events
+        for event in events:
+            self.events.extend(eventsplit(event))
+        if complete:
+            self.complete()
     def complete(self):
-        '''unions a schedule with its complement'''
+        '''adds break times'''
         day_dict = defaultdict(list)
         for event in self.events:
             day_dict[event.day].append(event)
@@ -88,7 +84,6 @@ class Schedule:
     def __str__(self):
         return ("%s has %d events\n" % (self.Owner, len(self.events))+
                 '\n'.join([str(e) for e in self.events]))
-            
 
 #test code
 print 'schedule 0'

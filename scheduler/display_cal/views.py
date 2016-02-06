@@ -1,13 +1,9 @@
-from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.template import loader
 from django.shortcuts import render
 import datetime
 from .models import Period, Person, Course
 
 def index(request, username=None):
-    template = loader.get_template('display_cal/index.html')
-    
     user = Person.objects.filter(username__exact=username).first()
     userPeriods = []
     periods = [datetime.time(h,m) for h in range(7,21) for m in [0,30]]
@@ -28,9 +24,10 @@ def index(request, username=None):
                 
             userPeriods.extend(list(Period.objects.filter(courses__name__contains=course.name)))
     
+    #TODO: render different courses with different colors
+    
     context = {'days_of_week': days,
-               'user_periods': userPeriods,
                'schedule': schedule,
-               'friends': courseFriends}
+               }
                
     return render(request, 'display_cal/index.html', context)

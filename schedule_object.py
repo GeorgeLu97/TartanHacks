@@ -1,11 +1,11 @@
 import icalendar
 
 class Event:
-    datekeys = ['DTSTAMP', 'DTSTART', 'DTEND']
-    stringkeys= ['SUMMARY', 'LOCATION', 'DESCRIPTION']
+    datekeys = ['DTSTART', 'DTEND'] #'DTSTAMP'
+    stringkeys= ['SUMMARY', 'LOCATION'] #'DESCRIPTION'
     def __init__(self, component):
         for key in Event.datekeys:
-            setattr(self, key.lower(), (component.get(key).dt))
+            setattr(self, key.lower()[2:], (component.get(key).dt))
         for key in Event.stringkeys:
             setattr(self, key.lower(), str(component.get(key)))
 
@@ -20,4 +20,4 @@ class Schedule:
 
 
 #test code
-q = Schedule('test_schedule.ics')
+#q = Schedule('test_schedule.ics')

@@ -26,7 +26,7 @@ def overlap_schedule(s1, s2):
         for component2 in s2.events:
             e = overlap(component1, component2)
             if e:
-                e.summary = "Shared With " + s2.Owner
+                e.summary = s1.summary + " shared with " + s2.Owner
                 ret.events.append(e)
 
     return ret
@@ -35,15 +35,13 @@ def overlap_s_schedule(sh1,s1,s2):
     #returns shared schedule based on s1, with sh1 being already shared
     r1 = overlap_schedule(s1,s2)
     for e1 in r1.events():
-        paired = False
-        e = Event()
+        paired = (False,Event())
         for e2 in sh1.events():
             if overlap(e1,e2):
-                paired = True
-                e = e2
+                paired = (True,e2)
                 break
-        if paired:
-            e.summary = e.summary + " " + s2.Owner
+        if paired[0]:
+            paired[1].summary = paired[1].summary + " " + s2.Owner
         else:
             sh1.append(e1)
     return sh1
@@ -52,7 +50,7 @@ def overlapping_wrapper(slist):
     #return overlap with slist[0] being client
     sh1 = Schedule()
     if len(slist) == 1:
-        return slist
+        sh1 = slist
     else:
         for i in range (0,len(slist) - 2):
             sh1 = overlap_s_schedule(sh1,slist[i],slist[i+1])

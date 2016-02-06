@@ -44,9 +44,11 @@ class Event:
 class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
-    def __init__(self,filename = None,splitevents = True):
+    Owner=''
+    def __init__(self,filename = None,Owner='',splitevents = True):
         events = []
         self.events = []
+        self.Owner = Owner
         if not filename:
             return
         with open(filename, "rb") as inf:

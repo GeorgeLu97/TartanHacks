@@ -21,3 +21,13 @@ def FileStringToICal(SCF,OwnerArray):
     x = open(OwnerArray.join(),'wb')
     x.write(cal.as_string())
     x.close()
+    return OwnerArray.join()
+
+def GroupIcal(SCF, OwnerArray):
+    #Literally least efficient way
+    cals = []
+    for x in range (0, len(SCF)):
+        SCF[0],SCF[x] = SCF[x],SCF[0]
+        OwnerArray[0], OwnerArray[x] = OwnerArray[x], OwnerArray[0]
+        cals.append(FileStringToICal(SCF,OwnerArray))
+    return cals

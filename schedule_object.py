@@ -44,9 +44,11 @@ class Event:
 class Schedule:
     '''a schedule object has one constructor which takes a filename
     it has one attribute -- a list of events, at obj.events'''
-    def __init__(self,filename,splitevents = True):
+    def __init__(self,filename = None,splitevents = True):
         events = []
         self.events = []
+        if not filename:
+            return
         with open(filename, "rb") as inf:
             schedule = icalendar.Calendar.from_ical(inf.read())
         for component in schedule.walk():
@@ -57,7 +59,13 @@ class Schedule:
                 self.events.extend(eventsplit(event))
         else:
             self.events = events
-            
+    def complete(self):
+        '''unions a schedule with its complement'''
+        #for each day of the week
+        #sort items
+        #if there is a gap, fill it
+        #edge case for start and end of day
+        pass
 
 #test code
 print 'schedule 0'

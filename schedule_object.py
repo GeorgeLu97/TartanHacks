@@ -2,6 +2,7 @@ from collections import defaultdict
 import icalendar
 import datetime
 import copy
+from date_conversion import get_dt
 
 def eventsplit(e):
     '''splits an event into a separate event for each day'''
@@ -38,6 +39,10 @@ class Event:
             self.summary = summary
         if location:
             self.location = location
+    def get_start_dt(self):
+        return get_dt(self.time[0],self.day)
+    def get_end_dt(self):
+        return get_dt(self.time[1],self.day)
     def __str__(self):
         return ("%s from %.1f to %.1f on %s" %
                 (self.location, self.time[0], self.time[1], self.day))

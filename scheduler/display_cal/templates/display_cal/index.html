@@ -12,4 +12,9 @@
         <td>Test 1<span class="tooltip">Yay!</span></td>
         <td>Test 2<span class="tooltip">Woo</span></td>
     </tr>
+    <tr>
+        {% for period in periods %}
+            <td>{{period}}</td>
+        {% endfor %}
+    </tr>
 </table>

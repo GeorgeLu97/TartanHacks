@@ -4,6 +4,7 @@ from django.db import models
 
 class Person(models.Model):
     name = models.CharField(max_length=50)
+    username = models.CharField(max_length=30, default='')
     other = models.TextField()
     
     def __unicode__(self):
@@ -23,3 +24,6 @@ class Period(models.Model):
     endTime = models.TimeField()
     day = models.CharField(max_length=2, default='NA')
     courses = models.ManyToManyField(Course)
+    
+    def __unicode__(self):
+        return "{0}: {1}, {2}".format(self.day, self.startTime, self.endTime)

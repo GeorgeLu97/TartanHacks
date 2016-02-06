@@ -14,3 +14,16 @@ td:hover span {
     display: block;
     text-align: center;
 }
+
+table {
+    background-color: white;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.middle {
+    margin: auto;
+    top: 50%;
+}

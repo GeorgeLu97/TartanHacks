@@ -4,6 +4,11 @@
 
 <table class="middle">
     <tr>
+        {% for day in days_of_week %}
+            <th>{{day}}</th>
+        {% endfor %}
+    </tr>
+    <tr>
         <td>Test 1<span class="tooltip">Yay!</span></td>
         <td>Test 2<span class="tooltip">Woo</span></td>
     </tr>

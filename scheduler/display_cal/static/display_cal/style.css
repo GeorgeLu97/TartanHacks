@@ -23,6 +23,10 @@ table {
     padding: 15px;
 }
 
+th td {
+    padding: 20px;
+}
+
 .middle {
     margin: auto;
     top: 50%;

@@ -5,5 +5,5 @@ from django.shortcuts import render
 
 def index(request):
     template = loader.get_template('display_cal/index.html')
-    context = None
+    context = {'days_of_week': ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"]}
     return render(request, 'display_cal/index.html', context)

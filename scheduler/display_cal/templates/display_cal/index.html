@@ -4,17 +4,21 @@
 
 <table class="middle">
     <tr>
+        <th>Time</th>
         {% for day in days_of_week %}
             <th>{{day}}</th>
         {% endfor %}
     </tr>
-    <tr>
-        <td>Test 1<span class="tooltip">Yay!</span></td>
-        <td>Test 2<span class="tooltip">Woo</span></td>
-    </tr>
-    <tr>
-        {% for period in periods %}
-            <td>{{period}}</td>
-        {% endfor %}
-    </tr>
+    {% for period in schedule %}
+        <tr>
+            <td class="label">{{period.0.0}}</td>
+            {% for day in period %}
+                {% if not day.1 %}
+                    <td class="break"></td>
+                {% else %}
+                    <td class="class"><span class="tooltip">class</span></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
 </table>

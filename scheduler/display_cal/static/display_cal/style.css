@@ -1,3 +1,7 @@
+td {
+    width: 50px;
+}
+
 td span {
     display: none;
     position: absolute;
@@ -18,16 +22,26 @@ td:hover span {
 table {
     background-color: white;
     text-align: center;
-    padding: 5px;
-    border: 1px solid black;
-    padding: 15px;
-}
-
-th td {
-    padding: 20px;
 }
 
 .middle {
     margin: auto;
     top: 50%;
+}
+
+tr {
+    height: 10px;
+}
+
+td.label {
+    text-align: right;
+    width: auto;
+}
+
+td.class {
+    background-color: #FFA500;
+}
+
+td.break {
+    background-color: white;
 }

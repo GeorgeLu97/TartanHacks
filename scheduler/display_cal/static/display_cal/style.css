@@ -13,7 +13,6 @@ a {
 td:hover span {
     display: block;
     text-align: center;
-<<<<<<< HEAD
 }
 
 table {
@@ -31,6 +30,4 @@ th td {
 .middle {
     margin: auto;
     top: 50%;
-=======
->>>>>>> 021fd84b07be709bdfaadaa09c4f095d89b20392
 }
